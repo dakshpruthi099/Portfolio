@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import { Geist } from 'next/font/google'
 import Layout from '@/components/layout/Layout'
+import { Analytics } from '@vercel/analytics/react'
 
 const geist = Geist({
   subsets: ['latin'],
@@ -15,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Layout>
           <Component {...pageProps} />
         </Layout>
+        <Analytics />
       </div>
     </ThemeProvider>
   )
