@@ -1,6 +1,8 @@
+import { chatLimiter } from '@/utils/rateLimit'
 import { NextApiRequest, NextApiResponse } from 'next'
 import OpenAI from 'openai'
 import { queryDocuments } from '@/utils/documentProcessor'
+import { CHAT_CONFIG } from '@/utils/constants'
 
 if (!process.env.OPENAI_API_KEY) {
   console.warn('Missing OPENAI_API_KEY environment variable')
@@ -15,7 +17,7 @@ Keep your responses casual but professional, like how a young tech professional 
 Don't use AI-like language or be too formal. Be friendly and straightforward.
 If someone asks about something not in my experience, just be honest and say you don't know or haven't worked with that.`
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -38,8 +40,8 @@ export default async function handler(
         { role: "system", content: systemPrompt },
         { role: "user", content: message }
       ],
-      temperature: 0.7,
-      max_tokens: 200
+      temperature: CHAT_CONFIG.TEMPERATURE,
+      max_tokens: CHAT_CONFIG.MAX_TOKENS
     })
 
     const response = completion.choices[0].message.content
@@ -49,3 +51,5 @@ export default async function handler(
     res.status(500).json({ error: 'Failed to process your request' })
   }
 }
+
+export default chatLimiter(handler)

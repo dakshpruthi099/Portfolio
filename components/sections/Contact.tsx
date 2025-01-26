@@ -5,6 +5,29 @@ import emailjs from '@emailjs/browser'
 import Notification from '../ui/Notification'
 import { useFormValidation } from '@/hooks/useFormValidation'
 
+// Initialize EmailJS
+emailjs.init({
+  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+})
+
+const EMAILJS_CONFIG = {
+  serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+}
+
+// Add validation
+if (!EMAILJS_CONFIG.serviceId || !EMAILJS_CONFIG.templateId || !EMAILJS_CONFIG.publicKey) {
+  console.error('Missing EmailJS configuration')
+}
+
+// Add proper type for form data
+interface ContactForm {
+  name: string
+  email: string
+  message: string
+}
+
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [notification, setNotification] = useState<{ type: 'success' | 'error', message: string } | null>(null)
@@ -30,19 +53,12 @@ export default function Contact() {
 
     setIsSubmitting(true)
 
-    const TEMPLATE_ID = process.env.EMAILJS_TEMPLATE_ID
-    const SERVICE_ID = process.env.EMAILJS_SERVICE_ID
-    const PUBLIC_KEY = process.env.EMAILJS_PUBLIC_ID
-
     try {
-      if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-        throw new Error('Missing environment variables for emailjs');
-      }
       await emailjs.sendForm(
-        SERVICE_ID,
-        TEMPLATE_ID,
+        EMAILJS_CONFIG.serviceId as string,
+        EMAILJS_CONFIG.templateId as string,
         formRef.current!,
-        PUBLIC_KEY
+        EMAILJS_CONFIG.publicKey as string
       )
       setNotification({
         type: 'success',
@@ -54,7 +70,7 @@ export default function Contact() {
       console.error(error)
       setNotification({
         type: 'error',
-        message: 'Failed to send message. Please try again or email me directly.'
+        message: 'Failed to send message. Please try again or email me directly @dakshpruthicareeers@gmail.com.'
       })
     } finally {
       setIsSubmitting(false)
@@ -107,7 +123,7 @@ export default function Contact() {
                   <FaTwitter className="h-6 w-6" />
                 </a>
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:dakshpruthicareers@gmail.com"
                   className="text-gray-600 dark:text-gray-400 hover:text-primary"
                 >
                   <FaEnvelope className="h-6 w-6" />
