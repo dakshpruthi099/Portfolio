@@ -116,7 +116,7 @@ export default function Skills() {
               >
                 <h3 className="text-xl font-semibold">{category.title}</h3>
                 <div className="grid grid-cols-2 gap-4">
-                  {category.skills.map((skill, skillIndex) => (
+                  {category.skills.map((skill) => (
                     <div
                       key={skill.name}
                       className="flex items-center gap-2 p-3 rounded-lg bg-gray-50 dark:bg-gray-800"

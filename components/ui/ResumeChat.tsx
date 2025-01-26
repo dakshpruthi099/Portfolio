@@ -7,7 +7,7 @@ export default function ResumeChat() {
   const [messages, setMessages] = useState<{ role: 'user' | 'assistant'; content: string }[]>([
     {
       role: 'assistant',
-      content: 'Hi! I\'m your RAG basedAI assistant. Feel free to ask me anything about Daksh\'s experience, skills, or projects!'
+      content: 'Hi! I\'m your RAG based AI assistant. Feel free to ask me anything about Daksh\'s experience, skills, or projects!'
     }
   ])
   const [input, setInput] = useState('')

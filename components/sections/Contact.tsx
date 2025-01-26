@@ -21,13 +21,6 @@ if (!EMAILJS_CONFIG.serviceId || !EMAILJS_CONFIG.templateId || !EMAILJS_CONFIG.p
   console.error('Missing EmailJS configuration')
 }
 
-// Add proper type for form data
-interface ContactForm {
-  name: string
-  email: string
-  message: string
-}
-
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [notification, setNotification] = useState<{ type: 'success' | 'error', message: string } | null>(null)
@@ -93,8 +86,8 @@ export default function Contact() {
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
-                I'm currently open for new opportunities. Whether you have a question or just want to say hi, 
-                I'll try my best to get back to you!
+                I&apos;m currently open for new opportunities. Whether you have a question or just want to say hi, 
+                I&apos;ll try my best to get back to you!
               </p>
               
               <div className="flex gap-4 mb-8">

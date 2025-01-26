@@ -13,7 +13,7 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Hi, I'm <span className="text-primary">Daksh Pruthi</span>
+            Hi, I&apos;m <span className="text-primary">Daksh Pruthi</span>
           </h1>
           <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-6">
             Full Stack Developer

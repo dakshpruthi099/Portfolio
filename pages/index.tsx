@@ -2,7 +2,6 @@ import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
 import Projects from '@/components/sections/Projects'
 import Skills from '@/components/sections/Skills'
-  variable: "--font-geist-sans"
 import Contact from '@/components/sections/Contact'
 import ScrollToTop from '@/components/ui/ScrollToTop'
 import ResumeChat from '@/components/ui/ResumeChat'

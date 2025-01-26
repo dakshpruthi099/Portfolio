@@ -121,7 +121,7 @@ export default function About() {
             {/* About Text */}
             <div className="space-y-6">
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                I'm a passionate Full Stack Developer with expertise in building modern web applications. 
+                I&apos;m passionate about building modern web applications. 
                 With a strong foundation in both frontend and backend technologies, I create seamless 
                 digital experiences that solve real-world problems.
               </p>
