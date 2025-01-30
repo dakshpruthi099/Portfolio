@@ -9,7 +9,7 @@ export default function ResumeChat() {
   const [messages, setMessages] = useState<{ role: 'user' | 'assistant'; content: string }[]>([
     {
       role: 'assistant',
-      content: 'Hi! I\'m your RAG based AI assistant. Feel free to ask me anything about Daksh\'s experience, skills, or projects!'
+      content: "Hi! I'm your RAG based AI assistant. Feel free to ask me anything about Daksh's experience, skills, or projects!"
     }
   ])
   const [input, setInput] = useState('')
@@ -78,7 +78,7 @@ export default function ResumeChat() {
           >
             <div className="flex items-center gap-3">
               <FaRobot className="h-6 w-6 text-primary" />
-              <p className="flex-1">Hi! I can help you learn more about Daksh's experience!</p>
+              <p className="flex-1">Hi! I can help you learn more about Daksh&apos;s experience!</p>
               <button 
                 onClick={() => setShowWelcomeToast(false)}
                 className="text-gray-500"
