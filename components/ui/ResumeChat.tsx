@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaRobot, FaTimes, FaPaperPlane } from 'react-icons/fa'
 
 export default function ResumeChat() {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
+  const [showWelcomeToast, setShowWelcomeToast] = useState(true)
+  const [isMobile, setIsMobile] = useState(true) // Default to mobile to prevent flash
   const [messages, setMessages] = useState<{ role: 'user' | 'assistant'; content: string }[]>([
     {
       role: 'assistant',
@@ -12,6 +14,27 @@ export default function ResumeChat() {
   ])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    // Handle initial state and window resize
+    const handleResize = () => {
+      const mobile = window.innerWidth < 768
+      setIsMobile(mobile)
+      if (!mobile) {
+        setIsOpen(true)
+        setShowWelcomeToast(false)
+      }
+    }
+
+    // Set initial state
+    handleResize()
+
+    // Add resize listener
+    window.addEventListener('resize', handleResize)
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -44,9 +67,33 @@ export default function ResumeChat() {
 
   return (
     <>
+      {/* Welcome Toast for Mobile */}
+      <AnimatePresence>
+        {showWelcomeToast && isMobile && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            className="fixed bottom-20 left-4 right-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg z-50"
+          >
+            <div className="flex items-center gap-3">
+              <FaRobot className="h-6 w-6 text-primary" />
+              <p className="flex-1">Hi! I can help you learn more about Daksh's experience!</p>
+              <button 
+                onClick={() => setShowWelcomeToast(false)}
+                className="text-gray-500"
+              >
+                <FaTimes />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Chat Button and Window */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 left-6 p-4 bg-primary text-white rounded-full shadow-lg hover:bg-primary/90 transition-colors"
+        className="fixed bottom-6 left-6 p-4 bg-primary text-white rounded-full shadow-lg hover:bg-primary/90 transition-colors z-50"
       >
         <FaRobot className="h-6 w-6" />
       </button>
@@ -57,7 +104,7 @@ export default function ResumeChat() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-24 left-6 w-96 bg-white dark:bg-gray-800 rounded-lg shadow-xl"
+            className="fixed bottom-24 left-6 w-[calc(100%-3rem)] md:w-96 max-h-[80vh] md:max-h-none bg-white dark:bg-gray-800 rounded-lg shadow-xl z-50"
           >
             <div className="p-4 border-b dark:border-gray-700 flex justify-between items-center">
               <h3 className="font-semibold">Ask me anything about Daksh</h3>

@@ -11,7 +11,7 @@ const geist = Geist({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider attribute="class" enableSystem defaultTheme="system" disableTransitionOnChange>
+    <ThemeProvider attribute="class" enableSystem defaultTheme="dark" disableTransitionOnChange>
       <div className={`${geist.className} bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}>
         <Layout>
           <Component {...pageProps} />

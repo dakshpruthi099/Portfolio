@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa'
 import { useState, useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import Notification from '../ui/Notification'
@@ -90,12 +90,32 @@ export default function Contact() {
                 I&apos;ll try my best to get back to you!
               </p>
               
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                  <FaMapMarkerAlt className="h-5 w-5 text-primary" />
+                  <span>Jersey City, NJ</span>
+                </div>
+                <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                  <FaEnvelope className="h-5 w-5 text-primary" />
+                  <a 
+                    href="mailto:dakshpruthicareers@gmail.com"
+                    className="hover:text-primary transition-colors"
+                  >
+                    dakshpruthicareers@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                  <FaPhone className="h-5 w-5 text-primary" />
+                  <span>Available upon request</span>
+                </div>
+              </div>
+              
               <div className="flex gap-4 mb-8">
                 <a
                   href="https://github.com/dakshpruthi099"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary"
+                  className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
                 >
                   <FaGithub className="h-6 w-6" />
                 </a>
@@ -103,7 +123,7 @@ export default function Contact() {
                   href="https://linkedin.com/in/dakshpruthi"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary"
+                  className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
                 >
                   <FaLinkedin className="h-6 w-6" />
                 </a>
@@ -111,15 +131,9 @@ export default function Contact() {
                   href="https://twitter.com/elonmusk"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary"
+                  className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
                 >
                   <FaTwitter className="h-6 w-6" />
-                </a>
-                <a
-                  href="mailto:dakshpruthicareers@gmail.com"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary"
-                >
-                  <FaEnvelope className="h-6 w-6" />
                 </a>
               </div>
             </div>

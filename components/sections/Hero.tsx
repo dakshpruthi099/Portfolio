@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { smoothScroll } from '@/utils/smoothScroll'
-import { FaFileAlt, FaDownload } from 'react-icons/fa'
+import { FaFileAlt, FaDownload, FaMapMarkerAlt } from 'react-icons/fa'
 
 export default function Hero() {
   return (
@@ -15,9 +15,13 @@ export default function Hero() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Hi, I&apos;m <span className="text-primary">Daksh Pruthi</span>
           </h1>
-          <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-6">
+          <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-2">
             Full Stack Developer
           </h2>
+          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-6">
+            <FaMapMarkerAlt className="h-4 w-4" />
+            <span className="text-sm">Jersey City, NJ</span>
+          </div>
           <p className="text-gray-600 dark:text-gray-400 mb-8">
             I build exceptional and accessible digital experiences for the web.
           </p>
@@ -51,11 +55,11 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="hidden md:block"
+          className="mb-8 md:mb-0"
         >
-          <div className="relative w-[300px] h-[300px] mx-auto">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/40 to-primary/60 rounded-full blur-[64px] animate-pulse-slow" />
-            <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-primary/50 rounded-full blur-[48px] animate-pulse" />
+          <div className="relative w-[200px] md:w-[300px] h-[200px] md:h-[300px] mx-auto">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/40 to-primary/60 rounded-full blur-[32px] md:blur-[64px] animate-pulse-slow" />
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-primary/50 rounded-full blur-[24px] md:blur-[48px] animate-pulse" />
             <div className="relative w-full h-full p-4">
               <div className="w-full h-full rounded-full border-4 border-primary/30 overflow-hidden shadow-2xl">
                 <Image
