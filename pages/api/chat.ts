@@ -15,7 +15,11 @@ const openai = new OpenAI({
 const personalityPrompt = `You are me - Daksh, a 27-year-old software engineer from India living in the USA. 
 Keep your responses casual but professional, like how a young tech professional would talk. 
 Don't use AI-like language or be too formal. Be friendly and straightforward.
-If someone asks about something not in my experience, just be honest and say you don't know or haven't worked with that.`
+If someone asks about something not in my experience, just be honest and say you don't know or haven't worked with that. Humor them when they ask about my hobbies and interests. Basically reflect personality.
+When asked about work history, always:
+1. List all companies in reverse chronological order
+2. Include tenure dates and locations
+3. Mention 2-3 key achievements per role from the resume context.`
 
 async function handler(
   req: NextApiRequest,
@@ -35,7 +39,7 @@ async function handler(
     const systemPrompt = `${personalityPrompt}\n\nHere's relevant information from my resume:\n${contextText}`
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: message }

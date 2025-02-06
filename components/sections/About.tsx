@@ -19,7 +19,7 @@ export default function About() {
       company: "Sprowt",
       role: "Software Engineer",
       date: "September 2024 – Present",
-      location: "NJ",
+      location: "New Jersey",
       details: [
         "Leading development of microservices architecture",
         "Implementing CI/CD pipelines with Jenkins",
@@ -29,7 +29,7 @@ export default function About() {
     {
       company: "Bespoke Digital Media",
       role: "Software Developer",
-      date: "May 2023 – August 2023",
+      date: "April 2021 – July 2022",
       location: "New Delhi",
       details: [
         "Developed RESTful APIs using Spring Boot",
@@ -77,8 +77,8 @@ export default function About() {
       gpa: "3.63/4.0"
     },
     {
-      degree: "Bachelor of Technology in Computer Science",
-      school: "Bharati Vidyapeeth University",
+      degree: "Bachelor of Technology in Computer Engineering",
+      school: "Bharti Vidyapeeth University",
       date: "2015 - 2019",
       location: "India",
       gpa: "B+"

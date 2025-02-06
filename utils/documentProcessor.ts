@@ -59,6 +59,6 @@ export async function queryDocuments(query: string) {
     namespace: 'resume'
   })
 
-  const results = await vectorStore.similaritySearch(query, 3)
+  const results = await vectorStore.similaritySearch(query, 5)
   return results
 }
