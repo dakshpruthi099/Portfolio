@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
+// import {FaExternalLinkAlt} from 'react-icons/fa'
+import { FaGithub} from 'react-icons/fa'
 
 interface Project {
   title: string
@@ -8,7 +9,7 @@ interface Project {
   image: string
   technologies: string[]
   githubUrl: string
-  liveUrl: string
+  // liveUrl: string
   details: string[]
 }
 
@@ -34,7 +35,7 @@ const projects: Project[] = [
       "Optimized MySQL performance with indexing and sharding, reducing load times by 40%"
     ],
     githubUrl: "https://github.com/dakshpruthi099/payment-gateway",
-    liveUrl: "https://payment-gateway-demo.com"
+    // liveUrl: ""
   },
   {
     title: "E-commerce Microservices Platform",
@@ -57,7 +58,7 @@ const projects: Project[] = [
       "Enhanced monitoring with Prometheus and Grafana for performance optimization"
     ],
     githubUrl: "https://github.com/dakshpruthi099/ecommerce-platform",
-    liveUrl: "https://ecommerce-demo.com"
+    // liveUrl: ""
   }
 ]
 
@@ -125,14 +126,14 @@ export default function Projects() {
                     >
                       <FaGithub /> Code
                     </a>
-                    <a
+                    {/* <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary"
                     >
                       <FaExternalLinkAlt /> Live Demo
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               </motion.div>
